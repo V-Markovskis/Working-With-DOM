@@ -69,3 +69,41 @@ function thirdRectangleOpacity() {
     }
     isTransparent = !isTransparent;
 }
+
+
+//task4
+const button4 = document.querySelector('.button4');
+button4.addEventListener('click', rectangleFourOpacity);
+
+let isTransparentBoxFour = false;
+
+function rectangleFourOpacity() {
+    const box4: HTMLElement | null = document.querySelector('.box4');
+    if (box4) {
+        if (isTransparentBoxFour) {
+            box4.style.opacity = '0';
+        } else {
+            box4.style.opacity = '1';
+        }
+    }
+    
+    isTransparentBoxFour = !isTransparentBoxFour;
+}
+
+
+//task5
+const button5 = document.querySelector('.button5');
+button5.addEventListener('click', rectangleFiveColorChange);
+
+const arrayColor = ['#f48686', '#b7934f', '#15695f', '#7b4ba2', '#d5ead8'];
+let currentColorIndex = 0;
+
+function rectangleFiveColorChange() {
+    const box5: HTMLElement | null = document.querySelector('.box5');
+
+    if (box5) {
+        box5.style.backgroundColor = arrayColor[currentColorIndex];
+    }
+
+    currentColorIndex = (currentColorIndex + 1) % arrayColor.length; //allows loop start again when reach legth max
+}
