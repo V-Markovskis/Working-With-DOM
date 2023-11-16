@@ -99,11 +99,72 @@ const arrayColor = ['#f48686', '#b7934f', '#15695f', '#7b4ba2', '#d5ead8'];
 let currentColorIndex = 0;
 
 function rectangleFiveColorChange() {
-    const box5: HTMLElement | null = document.querySelector('.box5');
+    const box5 = document.querySelector<HTMLButtonElement>('.box5');
 
     if (box5) {
         box5.style.backgroundColor = arrayColor[currentColorIndex];
     }
 
     currentColorIndex = (currentColorIndex + 1) % arrayColor.length; //allows loop start again when reach legth max
+}
+
+//task6
+const button6 = document.querySelector('.button6');
+button6.addEventListener('click', rectangleSixNumIncrement);
+
+function rectangleSixNumIncrement() {
+    const box6 = document.querySelector<HTMLButtonElement>('.box6');
+    box6.style.display = 'flex';
+    box6.style.alignItems = 'center';
+    box6.style.justifyContent = 'center';
+    box6.style.fontSize = '50px';
+    let counter = 0;
+
+    if (box6) {
+        const intervalId = setInterval(() => {
+            box6.innerHTML = counter.toString();
+            counter++;
+            console.log(box6.innerHTML);
+
+            if (counter > 10) {
+                clearInterval(intervalId);
+            }
+        }, 3000);
+    }
+    //https://stackoverflow.com/questions/35368888/counter-number-adds-1-every-six-seconds
+}
+
+
+//task 7
+const button7 = document.querySelector('.button7');
+button7.addEventListener('click', allRectanglesAndBackground);
+
+function allRectanglesAndBackground() {
+    const allBoxes = document.querySelectorAll<HTMLElement>('.box');
+    if (allBoxes) {
+        allBoxes.forEach((box) => {
+            // eslint-disable-next-line no-param-reassign
+            box.style.backgroundColor = '#18D5E1';
+        });
+
+        document.body.style.backgroundColor = '#000000';
+    }
+}
+
+
+//task8
+const box1 = document.querySelector<HTMLElement>('.box1');
+box1.addEventListener('mouseover', changeColorToRed);
+
+let isRead = false;
+
+function changeColorToRed() {
+    if (box1) {
+        if (isRead) {
+            box1.style.backgroundColor = 'red';
+        } else {
+            box1.style.backgroundColor = '#1FC2AE';
+        }
+    }
+    isRead = !isRead;
 }
