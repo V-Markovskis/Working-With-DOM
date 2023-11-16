@@ -1,3 +1,80 @@
 body {
   background-color: antiquewhite;
 }
+
+.container {
+  max-width: 1200px;
+  padding: 0 50px;
+  margin: 0 auto;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+.button-container {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  padding: 50px 0;
+}
+
+.button {
+  padding: 20px 40px;
+  border-radius: 8px;
+}
+
+.button1 {
+  background: #017187;
+}
+
+.button2 {
+  background: #5C0187B5;
+}
+
+.button3 {
+  background: #8711018F;
+}
+
+.button4 {
+  background: #01870EA1;
+}
+
+.button5 {
+  background: #E2CF22;
+}
+
+.button6 {
+  background: #011E87;
+}
+
+.button7 {
+  background: #18D5E1;
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
+.others {
+  margin-top: -100px;
+}
+
+.box-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 100px;
+  align-items: center;
+  justify-items: center;
+}
+
+.box {
+  max-width: 300px;
+  width: 200px;
+  max-height: 300px;
+  height: 200px;
+  background: #1FC2AE;
+}
+
+.inner-container {
+  margin: 50px;
+}
