@@ -61,7 +61,7 @@ let isTransparent = false;
 function thirdRectangleOpacity() {
     const box3: HTMLElement | null = document.querySelector('.box3');
     if (box3) {
-        if (isTransparent) {
+        if (!isTransparent) {
             box3.style.opacity = '0';
         } else {
             box3.style.opacity = '1';
@@ -80,7 +80,7 @@ let isTransparentBoxFour = false;
 function rectangleFourOpacity() {
     const box4: HTMLElement | null = document.querySelector('.box4');
     if (box4) {
-        if (isTransparentBoxFour) {
+        if (!isTransparentBoxFour) {
             box4.style.opacity = '0';
         } else {
             box4.style.opacity = '1';
@@ -160,11 +160,88 @@ let isRead = false;
 
 function changeColorToRed() {
     if (box1) {
-        if (isRead) {
+        if (!isRead) {
             box1.style.backgroundColor = 'red';
         } else {
             box1.style.backgroundColor = '#1FC2AE';
         }
     }
     isRead = !isRead;
+}
+
+
+//task 9 (extra)
+const box5 = document.querySelector<HTMLElement>('.box5');
+box5.style.display = 'flex';
+box5.style.alignItems = 'center';
+box5.style.justifyContent = 'center';
+box5.style.fontSize = '50px';
+let counterToTen = 0;
+let intervalId: NodeJS.Timer | undefined;
+
+box5.addEventListener('mouseover', startCount);
+box5.addEventListener('mouseout', stopCount);
+
+function startCount() {
+    intervalId = setInterval(() => {
+        if (box5) {
+            box5.innerHTML = counterToTen.toString();
+            counterToTen++;
+            
+            if (counterToTen > 10) {
+                clearInterval(intervalId);
+            }
+        }
+    }, 1000);
+}
+
+function stopCount() {
+    if (box5) {
+        clearInterval(intervalId);
+        counterToTen = 0;
+        box5.innerHTML = '0';
+    }
+}
+
+
+//task10 (extra)
+
+//secondaryInput represent second input
+let secondaryInput: HTMLInputElement | null = null; //null means empty variable
+
+document.querySelector('input')?.addEventListener('input', function() { // "?" (optional chaining) in order to avoid "null" or "undefined" result
+    updateSecondaryInput(this.value); //this.value represents input text;
+});
+
+function updateSecondaryInput(value: string) {
+    if (value.trim() !== '') {
+        if (!secondaryInput) {
+            createSecondaryInput();
+        }
+        if (secondaryInput) {
+            secondaryInput.value = value;
+        }
+    } else {
+        removeSecondaryInput();
+    }
+}
+
+function createSecondaryInput() {
+    const container = document.querySelector('.TSinputContainer');
+    if (container) {
+        secondaryInput = document.createElement('input');
+        secondaryInput.setAttribute('type', 'text');
+        secondaryInput.setAttribute('disabled', 'true'); //user cannot interact with second input
+        container.appendChild(secondaryInput);
+    }
+}
+
+function removeSecondaryInput() {
+    if (secondaryInput) {
+        const container = document.querySelector('.TSinputContainer');
+        if (container) {
+            container.removeChild(secondaryInput);
+            secondaryInput = null;
+        }
+    }
 }
